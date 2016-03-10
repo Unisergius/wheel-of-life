@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Wheel of Life</title>
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="css/bootstrap-responsive.css" rel="stylesheet" type="text/css">
+	<link href="css/custom.css" rel="stylesheet" type="text/css">
+	<!-- HTML5 shim for IE backwards compatibility -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <![endif]-->
+      <script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-43141704-1', 'wheeloflifetemplate.com');
+	  ga('send', 'pageview');
+	
+	</script>
+  </head>
+
+  <body>
+  	<div class="navbar navbar-inverse navbar-fixed-top">
+  		<div class="navbar-inner">
+  			<div class="container">
+  				<a class="brand" href="#">Wheel of Life</a>
+  			</div>
+  		</div>
+  	</div>
+
+  	<div class="container">
+	  	<div class="row">
+	  		<div class="span6">
+	  			<h2>Please rate each area of your life</h2>
+	  		</div>
+	  		 <div class="span6">
+	  		 </div>
+	  	</div>
+	  	<div class="row">
+	  		<div class="span3">
+	  			<form>
+	  				<fieldset>
+			  			<label class='life_area'>Fitness/Health</label>
+						<select id='fitness'>
+						  <option value="1">1</option>
+						  <option value="2">2</option>
+						  <option value="3">3</option>
+						  <option value="4">4</option>
+						  <option value="5">5</option>
+						</select>
+						<label class='life_area'>Career</label>
+						<select id='career'>
+						  <option value="1">1</option>
+						  <option value="2">2</option>
+						  <option value="3">3</option>
+						  <option value="4">4</option>
+						  <option value="5">5</option>
+						</select>
+						<label class='life_area'>Personal and Spiritual Growth</label>
+						<select id='spiritual'>
+						  <option value="1">1</option>
+						  <option value="2">2</option>
+						  <option value="3">3</option>
+						  <option value="4">4</option>
+						  <option value="5">5</option>
+						</select>						
+						<label class='life_area'>Money</label>
+						<select id='money'>
+						  <option value="1">1</option>
+						  <option value="2">2</option>
+						  <option value="3">3</option>
+						  <option value="4">4</option>
+						  <option value="5">5</option>
+						</select>
+						<label class='life_area'>Romance/ Significant Other</label>
+						<select id='romance'>
+						  <option value="1">1</option>
+						  <option value="2">2</option>
+						  <option value="3">3</option>
+						  <option value="4">4</option>
+						  <option value="5">5</option>
+						</select>
+						<label class='life_area'>Physical Enviroment/Home</label>
+						<select id='home'>
+						  <option value="1">1</option>
+						  <option value="2">2</option>
+						  <option value="3">3</option>
+						  <option value="4">4</option>
+						  <option value="5">5</option>
+						</select>
+						<label class='life_area'>Fun/Recreation</label>
+						<select if='fun'>
+						  <option value="1">1</option>
+						  <option value="2">2</option>
+						  <option value="3">3</option>
+						  <option value="4">4</option>
+						  <option value="5">5</option>
+						</select>
+						<label class='life_area'>Friends/Family</label>
+						<select id='family'>
+						  <option value="1">1</option>
+						  <option value="2">2</option>
+						  <option value="3">3</option>
+						  <option value="4">4</option>
+						  <option value="5">5</option>
+						</select>
+						<div class="control-group">
+							<button type="submit" id="generate_wheel" class="btn btn-primary">Generate Your Wheel of Life</button>
+						</div>
+					</fieldset>	
+				</form>			
+			</div>
+			<div class="span9">
+				<div id="canvas_container"></div> 
+			</div>
+  		</div>
+  	</div> <!-- /container -->
+
+  	<script src="http://code.jquery.com/jquery-latest.js"></script>
+  	<script src="js/bootstrap.min.js"></script>
+  	<script src="js/lib/raphael-min.js"></script>
+  	<script src="js/custom.js"></script>
+  </body>
+  </html>
