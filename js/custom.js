@@ -6,15 +6,15 @@ $(document).ready(function(){
 	var right_offset = 400;
 	var top_offset = 250;
 	//Radius of first circle to be drawn
-	var base_radius = 40;
+	var base_radius = 20;
 	var final_radius = 0;
 
 	//Define function used to draw blank wheel of life
 	function drawBlankWheel() {
 		//Draw a series of circle in the center
 		var dot = paper.circle(right_offset, top_offset, 1); //Center
-		//5 circles, radius incrementing by 40
-		for(var i = 0; i < 6; i++){
+		//5 circles, radius incrementing by 20
+		for(var i = 0; i < 11; i++){
 			final_radius = base_radius*i;
 			paper.circle(right_offset, top_offset, final_radius);
 
@@ -42,14 +42,13 @@ $(document).ready(function(){
 			}
 		}
 	}
-	//Draw the wheel for the first time
-	drawBlankWheel();
-	//Generate Wheel Click Listener
-	$('#generate_wheel').click(function(){
+
+	function updateWheel() {
 		paper.clear();
 		drawBlankWheel();
-		var pathStr = "";
-		$.each($('select'), function(key,value){
+		var pathStrHave = "";
+		var pathStrWant = "";
+		$.each($('select.have'), function(key,value){
 			key = key-2;
 			var x = Math.cos(key*Math.PI/4 + Math.PI/8)*$(value).val()*base_radius;
 			var y = Math.sin(key*Math.PI/4 + Math.PI/8)*$(value).val()*base_radius;
@@ -57,15 +56,42 @@ $(document).ready(function(){
 			y = top_offset+y;
 			paper.circle(x, y, 2).attr({fill: '#ddd', stroke: '#ddd', 'stroke-width': 1}); //Center
 			if (key == -2){ //First data point, move there
-				pathStr += "M "+x+" ,"+y; //Upper case L = absolute value
+				pathStrHave += "M "+x+" ,"+y; //Upper case L = absolute value
 			} else { //All other data points, simply draw line ot next point
-				pathStr += " L "+x+" ,"+y;
+				pathStrHave += " L "+x+" ,"+y;
 			}
 			
 		});
-		pathStr += " z";
-		console.log(pathStr);
-		paper.path(pathStr).attr({fill: '#9cf', stroke: '#ddd', 'stroke-width': 2});
+		$.each($('select.want'), function(key,value){
+			key = key-2;
+			var x = Math.cos(key*Math.PI/4 + Math.PI/8)*$(value).val()*base_radius;
+			var y = Math.sin(key*Math.PI/4 + Math.PI/8)*$(value).val()*base_radius;
+			x = right_offset+x;
+			y = top_offset+y;
+			paper.circle(x, y, 2).attr({fill: '#ddd',  stroke: '#ddd', 'stroke-width': 1}); //Center
+			if (key == -2){ //First data point, move there
+				pathStrWant += "M "+x+" ,"+y; //Upper case L = absolute value
+			} else { //All other data points, simply draw line ot next point
+				pathStrWant += " L "+x+" ,"+y;
+			}
+			
+		});
+		pathStrHave += " z";
+		pathStrWant += " z";
+		console.log(pathStrHave);
+		console.log(pathStrWant);
+		paper.path(pathStrHave).attr({fill: '#f6b26b', opacity: .6, stroke: '#e69138', 'stroke-width': 2});
+		paper.path(pathStrWant).attr({fill: '#93c47d', opacity: .6, stroke: '#6aa84f', 'stroke-width': 2});
+	}
+	//Draw the wheel for the first time
+	drawBlankWheel();
+	//Generate Wheel Click Listener
+	$('#generate_wheel').click(function(){
+		updateWheel();
 		return false;
+	});
+
+	$('select').change(function() {
+		updateWheel();
 	});
 })

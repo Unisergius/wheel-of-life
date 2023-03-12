@@ -7,3 +7,28 @@ body {
     width: 1000px;  
     /*border: 1px solid #aaa;  */
 }  	
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 40px 40px;
+    grid-gap: 16px;
+}
+
+label {
+    grid-column: 1 / 2;
+}
+
+select.have {
+    width:40px !important;
+    grid-column: 2 / 3;
+}
+
+select.want {
+    width:40px !important;
+    grid-column: 3 / 4;
+}
+
+.full-width {
+    grid-column: 1 / 4;
+}
+
